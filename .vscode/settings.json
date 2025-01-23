@@ -1,0 +1,26 @@
+{
+    "editor.formatOnSave": true,
+    "C_Cpp.clang_format_fallbackStyle": "{BasedOnStyle: Microsoft, InsertBraces: true}",
+    "files.associations": {
+        "imagen.h": "c",
+        "text.h": "c",
+        "stdio.h": "c",
+        "ebentoak.h": "c",
+        "graphics.h": "c",
+        "etsailaren_funtzioak.h": "c",
+        "gurefuntzioak.h": "c",
+        "1misioa.h": "c",
+        "2misioa.h": "c",
+        "jokoa.h": "c",
+        "4misioa.h": "c",
+        "main.h": "c",
+        "denbora.h": "c",
+        "ordamodua.h": "c",
+        "soinua.h": "c",
+        "3misioa.h": "c",
+        "jokalariaren_funtzioak.h": "c",
+        "sariaren_funtzioak.h": "c",
+        "misioak.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
+}
