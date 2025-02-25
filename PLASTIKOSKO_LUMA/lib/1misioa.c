@@ -20,7 +20,7 @@ SARIAK sariak;
 EGOERA LehenengoMisioa(void)
 {
     // Aldagaiak hasieratzen dira
-    int ebentu = 0, irten = 0, bai = 0, puntuazioa = 0, i, j, bukaera = 0, back;
+    int ebentu = 0, irten = 0, bai = 0, puntuazioa = 0, i, j, bukaera = 0, back, pantailaKanpoan = 0;
     char contadorTexto[50];
 
     // Jokalariaren egoera hasieratzen da
@@ -33,7 +33,7 @@ EGOERA LehenengoMisioa(void)
     TIROA tiroak[MAX_TIROAK] = {0};
 
     // Soinuak hasieratzen dira
-    Mix_Chunk *soinuak[5] = {NULL};
+    Mix_Chunk *soinuak[6] = {NULL};
 
     // Soinuen artxiboak definitzen dira
     const char *soinuenArtxiboak[5] = {"./sound/victory.wav", "./sound/loose.wav", "./sound/water-drop-clean-fx.wav",
@@ -45,6 +45,7 @@ EGOERA LehenengoMisioa(void)
     soinuak[2] = Mix_LoadWAV(soinuenArtxiboak[2]); // tiro
     soinuak[3] = Mix_LoadWAV(soinuenArtxiboak[3]); // etsaila jo
     soinuak[4] = Mix_LoadWAV(soinuenArtxiboak[4]); // jokoaren musika
+    soinuak[5] = Mix_LoadWAV(soinuenArtxiboak[5]); // jokoaren musika
 
     Mix_PlayChannel(1, soinuak[4], -1);
     Mix_Volume(1, 100);
@@ -77,7 +78,7 @@ EGOERA LehenengoMisioa(void)
     irudiaMugitu(jokalaria.id, jokalaria.pos.x, jokalaria.pos.y);
 
     // Jokoa hasieratzen da
-    while (puntuazioa < 25 && !irten)
+    while (puntuazioa < 5 && !irten)
     {
         // Ebentuak jaso eta pantaila garbitzen da
         SDL_Delay(5);
@@ -103,7 +104,7 @@ EGOERA LehenengoMisioa(void)
         for (i = 0; i < 6; i++)
         {
             EtsaiaMarraztu(&etsailak[i]);
-            EtsaiakMugitu(&etsailak[i], jokalaria.pos.x, jokalaria.pos.y, 0.3);
+            EtsaiakMugitu(&etsailak[i], jokalaria.pos.x, jokalaria.pos.y, 1); // etsailak geldi daude pruebak egiteko
         }
 
         // Tiroa kontrolatzen da

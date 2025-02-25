@@ -14,6 +14,15 @@ typedef enum
 
 typedef enum
 {
+    HASIERA,
+    MISIOAK,
+    ORDA,
+    IRTEN,
+
+} JOLAS_AUKERAK;
+
+typedef enum
+{
     IRUDIA,
     MARGOA,
     TESTUA

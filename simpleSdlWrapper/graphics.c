@@ -18,7 +18,7 @@ SDL_Renderer *getRenderer(void)
 {
     return gRenderer;
 }
-
+/*
 int sgHasieratu()
 {
     int ret = 0;
@@ -36,9 +36,68 @@ int sgHasieratu()
         fprintf(stderr, "Ezin lehioa sortu: %s\n", SDL_GetError());
         return -1;
     }
+
+    SDL_SetWindowGrab(window, SDL_TRUE);
+    SDL_SetRelativeMouseMode(SDL_FALSE);
+
     gRenderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     TTF_Init();
     atexit(TTF_Quit);
+    return ret;
+}
+*/
+
+int sgHasieratu()
+{
+    int ret = 0;
+
+    if (SDL_Init(SDL_INIT_VIDEO) < 0) // hasieratu sdl
+    {
+        fprintf(stderr, "Ezin SDL hasieratu: %s\n", SDL_GetError());
+        return -1;
+    }
+    atexit(SDL_Quit);
+
+    SDL_DisplayMode displayMode; // pantailaren  dimentzioak ateratzen ditu
+    if (SDL_GetCurrentDisplayMode(0, &displayMode) != 0)
+    {
+        fprintf(stderr, "Ezin pantailaren tamaina lortu: %s\n", SDL_GetError());
+        return -1;
+    }
+    int screenWidth = displayMode.w;
+    int screenHeight = displayMode.h;
+
+    window = SDL_CreateWindow(
+        "SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, screenWidth, screenHeight,
+        SDL_WINDOW_FULLSCREEN_DESKTOP); // lehioa kreatzen du eta bariablekin adaptatzen da gure pantailara
+
+    if (window == NULL)
+    {
+        fprintf(stderr, "Ezin lehioa sortu: %s\n", SDL_GetError());
+        return -1;
+    }
+
+    SDL_SetWindowGrab(window, SDL_TRUE);
+    SDL_SetRelativeMouseMode(SDL_FALSE);
+
+    gRenderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+    if (gRenderer == NULL)
+    {
+        fprintf(stderr, "Ezin renderizadorea sortu: %s\n", SDL_GetError());
+        return -1;
+    }
+    SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1");
+
+    SDL_RenderSetLogicalSize(gRenderer, SCREEN_WIDTH,
+                             SCREEN_HEIGHT); // gure programan dauden medidak reajustatzen ditu edozein resoluziora
+
+    if (TTF_Init() < 0)
+    {
+        fprintf(stderr, "Ezin TTF hasieratu: %s\n", TTF_GetError());
+        return -1;
+    }
+    atexit(TTF_Quit);
+
     return ret;
 }
 

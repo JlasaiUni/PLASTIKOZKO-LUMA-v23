@@ -23,7 +23,7 @@ int main(int argc, char *str[])
            laugarren_egoera = JOLASTEN, bosgarren_egoera = JOLASTEN;
 
     // Jokoaren aukerak definitzen
-    int aukera = 0;
+    JOLAS_AUKERAK aukera = HASIERA;
 
     // Testua eta audioa hasieratzen
     textuaGaitu();
@@ -33,23 +33,23 @@ int main(int argc, char *str[])
     HasierakoPantaila();
 
     // Jokoaren ziklo nagusia
-    while (aukera != 3)
+    while (aukera != IRTEN)
     {
         // Jokoaren aukera hautatzen
         aukera = ModuaAukeratu();
 
         // Jokoaren kontrolak definitzen
-        if (aukera != 3)
+        if (aukera != IRTEN)
         {
             Kontrolak();
         }
 
         // Jokoaren modua hautatzen
-        if (aukera == 2)
+        if (aukera == ORDA)
         {
             OrdaModua();
         }
-        if (aukera == 1)
+        if (aukera == MISIOAK)
         {
             // Jokoaren egoerak berriro definitzen
             lehen_egoera = JOLASTEN, bigarren_egoera = JOLASTEN, hirugarren_egoera = JOLASTEN,
@@ -58,10 +58,7 @@ int main(int argc, char *str[])
             // Kursorra ezkutatzen
             SDL_ShowCursor(0);
 
-            // Hasierako mezua erakusten
             hasierakoMensajea();
-
-            // Jokoa aurkezten
             jokoaAurkeztu();
 
             // Kursorra berriro erakusten

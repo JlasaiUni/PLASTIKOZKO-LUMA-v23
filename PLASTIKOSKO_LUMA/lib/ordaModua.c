@@ -74,8 +74,8 @@ void OrdaModua(void)
     EtsaiakSortu(&etsailak[5], 200, 1000, etsailaImagenId[5]);
 
     KontEtsailak = 6;
-    DisparoKono.posX = -100;
-    DisparoKono.posY = -100;
+    DisparoKono.posX = 100;
+    DisparoKono.posY = 100;
 
     // hazierako imagenak kargatzeko
     jokalaria.id = irudiaKargatu("./img/ahate berria.bmp");

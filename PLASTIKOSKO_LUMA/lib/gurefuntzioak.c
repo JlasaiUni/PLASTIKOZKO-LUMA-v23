@@ -121,18 +121,51 @@ void TartekoPantaila(double *posx, double *posy)
 {
     int bukaera = 0, ebentu;
     double posx2 = *posx, posy2 = *posy;
+    JOKO_ELEMENTUA gezia_itzalita, gezia_piztuta;
+    uint32_t hasierako_denbora = 0, pasatutako_denbora = 0;
+
+    gezia_itzalita.id = irudiaKargatu("./img/fletxa-itzalita.bmp");
+    gezia_itzalita.pos.x = 600;
+    gezia_itzalita.pos.y = 200;
+    irudiaMugitu(gezia_itzalita.id, gezia_itzalita.pos.x, gezia_itzalita.pos.y);
+
+    gezia_piztuta.id = irudiaKargatu("./img/fletxa-piztuta.bmp");
+    gezia_piztuta.pos.x = -200;
+    gezia_piztuta.pos.y = -200;
+    irudiaMugitu(gezia_piztuta.id, gezia_piztuta.pos.x, gezia_piztuta.pos.y);
 
     jokalaria.id = irudiaKargatu("./img/ahate berria.bmp"); // jokalariaren irudia kargatu
 
     while (bukaera == 0)
     {
         SDL_Delay(5); // 5 milisegundu itxaron
+        pasatutako_denbora = denboraLortu(&hasierako_denbora);
 
         ebentu = ebentuaJasoGertatuBada(); // ebentua jaso
+
+        if (pasatutako_denbora % 2 == 0)
+        {
+            gezia_piztuta.pos.x = -200;
+            gezia_piztuta.pos.y = -200;
+
+            gezia_itzalita.pos.x = 600;
+            gezia_itzalita.pos.y = 200;
+        }
+        else if (pasatutako_denbora % 2 != 0)
+        {
+            gezia_piztuta.pos.x = 600;
+            gezia_piztuta.pos.y = 200;
+
+            gezia_itzalita.pos.x = -200;
+            gezia_itzalita.pos.y = -200;
+        }
 
         // jokalariaren irudia mugitu
         JokalariMugimendu(&posy2, &posx2);
         irudiaMugitu(jokalaria.id, posx2, posy2);
+
+        irudiaMugitu(gezia_itzalita.id, gezia_itzalita.pos.x, gezia_itzalita.pos.y);
+        irudiaMugitu(gezia_piztuta.id, gezia_piztuta.pos.x, gezia_piztuta.pos.y);
 
         if ((posx2 >= SCREEN_WIDTH - 40) && (posy2 > 200) && (posy2 < 300)) // hurrengo pantailara pasatzeko baldintza
         {
@@ -170,10 +203,11 @@ void HasierakoPantaila(void)
     irudiaKendu(backgroundId);
 }
 
-int ModuaAukeratu(void)
+JOLAS_AUKERAK ModuaAukeratu(void)
 {
     // aldagaiak deklaratu
-    int egoera = 0, ebentu, fondo, aukera = 0, idAldaketa;
+    int ebentu, fondo, idAldaketa;
+    JOLAS_AUKERAK aukera = HASIERA;
     POSIZIOA Saguarenpos;
 
     fondo = irudiaKargatu("./img/PBL_aukeraketapantaila_dana_itzalita.bmp"); // fondo irudia kargatu
@@ -198,8 +232,7 @@ int ModuaAukeratu(void)
 
             if (ebentu == SAGU_BOTOIA_EZKERRA) // saguaren botoia ezkerrera klik egitean misioak modua aukeratu
             {
-                egoera = 1;
-                aukera = 1;
+                aukera = MISIOAK;
             }
         }
 
@@ -214,8 +247,7 @@ int ModuaAukeratu(void)
 
             if (ebentu == SAGU_BOTOIA_EZKERRA) // saguaren botoia ezkerrera klik egitean erronka modua aukeratu
             {
-                egoera = 1;
-                aukera = 2;
+                aukera = ORDA;
             }
         }
         // sagua 3 kuboaren gainean dagoenean
@@ -229,8 +261,7 @@ int ModuaAukeratu(void)
 
             if (ebentu == SAGU_BOTOIA_EZKERRA) // saguaren botoia ezkerrera klik egitean irten
             {
-                egoera = 1;
-                aukera = 3;
+                aukera = IRTEN;
             }
         }
 
@@ -247,7 +278,7 @@ int ModuaAukeratu(void)
         irudiakMarraztu();
         pantailaBerriztu();
 
-    } while (egoera == 0);
+    } while (aukera == HASIERA);
     irudiaKendu(fondo);
     return aukera;
 }

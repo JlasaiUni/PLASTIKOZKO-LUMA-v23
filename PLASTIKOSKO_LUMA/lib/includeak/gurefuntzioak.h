@@ -9,7 +9,7 @@ void BUKAERA_GALDU(void);
 void jokoaAurkeztu(void);
 void TartekoPantaila(double *posx, double *posy);
 void HasierakoPantaila(void);
-int ModuaAukeratu(void);
+JOLAS_AUKERAK ModuaAukeratu(void);
 void hasierakoMensajea(void);
 void bukaerakoMensajea(void);
 void Kontrolak(void);

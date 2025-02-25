@@ -16,7 +16,7 @@ uint32_t denboraLortu(uint32_t *hasierako_denbora)
     }
 
     // Calcular y devolver el tiempo transcurrido en segundos
-    return (SDL_GetTicks() - *hasierako_denbora) / 1000;
+    return ((SDL_GetTicks() - *hasierako_denbora) / 1000);
 }
 uint32_t denboraLortuMilisegundo(uint32_t *hasierako_denbora)
 {

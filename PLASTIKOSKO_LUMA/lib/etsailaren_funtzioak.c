@@ -63,6 +63,7 @@ void EtsaiaMarraztu(ETSAILAK *etsaila)
 {
     irudiaMugitu(etsaila->id, etsaila->x, etsaila->y);
 }
+
 void EtsaiakMugitu2(ETSAILAK *etsaila, double JokalariaPosX, double JokalariaPosy, double abiadura)
 {
     double dx, dy, Luzeera;

@@ -79,14 +79,14 @@ void JokalariMugimendu(double *JokalariaPosy, double *jokalariaPosx)
 void Disparoa(int ebentu, TIROA tiroak[MAX_DISPAROS], double posx, double posy)
 {
     double luzeera, disparoVelocidad = 3;
-    int j = 0;
+    int i, j = -1;
     POSIZIOA pos;
 
     if (ebentu == SAGU_BOTOIA_EZKERRA)
     {
         pos = saguarenPosizioa();
 
-        for (int i = 0; i < MAX_DISPAROS; i++)
+        for (i = 0; i < MAX_DISPAROS; i++)
         {
             if (!tiroak[i].aktibo)
             {
@@ -107,12 +107,12 @@ void Disparoa(int ebentu, TIROA tiroak[MAX_DISPAROS], double posx, double posy)
                     tiroak[i].id = irudiaKargatu("./img/UrPelota.bmp");
                     break;
                 }
-                // TIROA en cono (tres tiroak)
+                // TIROA en cono ( tiroak)
                 else if (tiroak[i].tipo == 1)
                 {
-                    if (i + j >= -1 && i + j < MAX_DISPAROS)
+                    if (i + j >= 0 && i + j < MAX_DISPAROS)
                     {
-                        for (j = -1; j <= 1; j++)
+                        for (j = 0; j <= 2; j++)
                         {
                             if (i + j < MAX_DISPAROS)
                             {
