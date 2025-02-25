@@ -107,17 +107,17 @@ EGOERA HirugarrengoMisioa(void)
         for (i = 0; i < 5; i++) // Etsailak marraztu eta mugitu, mugimendu normalarekin
         {
             EtsaiaMarraztu(&etsailak[i]);
-            EtsaiakMugitu(&etsailak[i], posx, posy, 0.3);
+            EtsaiakMugitu(&etsailak[i], posx, posy);
         }
         for (i = 5; i < 8; i++) // Etsailak marraztu eta mugitu, mugimendu oszilakorrarekin (cos eta sin)
         {
             EtsaiaMarraztu(&etsailak[i]);
-            EtsaiakMugitu2(&etsailak[i], posx, posy, 0.3);
+            EtsaiakMugitu2(&etsailak[i], posx, posy);
         }
         for (i = 8; i < 10; i++) // Etsailak marraztu eta mugitu, mugimendu oszilakorrarekin (cos)
         {
             EtsaiaMarraztu(&etsailak[i]);
-            EtsaiakMugitu3(&etsailak[i], posx, posy, 0.3);
+            EtsaiakMugitu3(&etsailak[i], posx, posy);
         }
 
         for (i = 0; i < 10; i++) // Jokalariaren eta etsail guztien kolisioa detektatu

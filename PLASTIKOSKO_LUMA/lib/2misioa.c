@@ -132,11 +132,11 @@ EGOERA BigarrengoMisioa(void)
         {
             for (i = 0; i < 4; i++)
             {
-                EtsaiakMugitu(&etsailak[i], jokalaria.pos.x, jokalaria.pos.y, 0.3);
+                EtsaiakMugitu(&etsailak[i], jokalaria.pos.x, jokalaria.pos.y);
             }
             for (i = 4; i < 6; i++)
             {
-                EtsaiakMugitu2(&etsailak[i], jokalaria.pos.x, jokalaria.pos.y, 0.3);
+                EtsaiakMugitu2(&etsailak[i], jokalaria.pos.x, jokalaria.pos.y);
             }
         }
 

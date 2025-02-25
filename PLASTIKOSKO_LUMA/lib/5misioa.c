@@ -91,12 +91,12 @@ EGOERA BosgarrengoMisioa(void)
         for (i = 0; i < 2; i++)
         {
             EtsaiaMarraztu(&etsailak[i]);
-            EtsaiakMugitu(&etsailak[i], jokalaria.pos.x, jokalaria.pos.y, 0.2);
+            EtsaiakMugitu(&etsailak[i], jokalaria.pos.x, jokalaria.pos.y);
         }
         for (i = 2; i < 4; i++)
         {
             EtsaiaMarraztu(&etsailak[i]);
-            EtsaiakMugitu3(&etsailak[i], jokalaria.pos.x, jokalaria.pos.y, 0.2);
+            EtsaiakMugitu3(&etsailak[i], jokalaria.pos.x, jokalaria.pos.y);
         }
 
         // DISPAROA DEITU

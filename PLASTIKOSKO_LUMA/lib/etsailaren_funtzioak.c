@@ -43,9 +43,9 @@ void EtsaiakSortu(ETSAILAK *etsaila, double x, double y, int idImagen)
     etsaila->id = idImagen;
 }
 
-void EtsaiakMugitu(ETSAILAK *etsaila, double JokalariaPosX, double JokalariaPosy, double abiadura)
+void EtsaiakMugitu(ETSAILAK *etsaila, double JokalariaPosX, double JokalariaPosy)
 {
-    double dx, dy, Luzeera;
+    double dx, dy, Luzeera, abiadura = 1.5;
 
     dx = JokalariaPosX - etsaila->x;
     dy = JokalariaPosy - etsaila->y;
@@ -64,10 +64,9 @@ void EtsaiaMarraztu(ETSAILAK *etsaila)
     irudiaMugitu(etsaila->id, etsaila->x, etsaila->y);
 }
 
-void EtsaiakMugitu2(ETSAILAK *etsaila, double JokalariaPosX, double JokalariaPosy, double abiadura)
+void EtsaiakMugitu2(ETSAILAK *etsaila, double JokalariaPosX, double JokalariaPosy)
 {
-    double dx, dy, Luzeera;
-    double oszilatu;
+    double dx, dy, Luzeera, oszilatu, abiadura = 1;
 
     oszilatu = SDL_GetTicks();
     oszilatu = oszilatu * 2 * M_PI / 1000;
@@ -83,13 +82,12 @@ void EtsaiakMugitu2(ETSAILAK *etsaila, double JokalariaPosX, double JokalariaPos
     dx /= Luzeera;
     dy /= Luzeera;
 
-    etsaila->x += dx * abiadura + cos(oszilatu);
-    etsaila->y += dy * abiadura + sin(oszilatu);
+    etsaila->x += dx * abiadura + cos(oszilatu) * 5;
+    etsaila->y += dy * abiadura + sin(oszilatu) * 5;
 }
-void EtsaiakMugitu3(ETSAILAK *etsaila, double JokalariaPosX, double JokalariaPosy, double abiadura)
+void EtsaiakMugitu3(ETSAILAK *etsaila, double JokalariaPosX, double JokalariaPosy)
 {
-    double dx, dy, Luzeera;
-    double oszilatu;
+    double dx, dy, Luzeera, oszilatu, abiadura = 1;
 
     oszilatu = SDL_GetTicks();
     oszilatu = oszilatu * 2 * M_PI / 10000;
@@ -105,8 +103,8 @@ void EtsaiakMugitu3(ETSAILAK *etsaila, double JokalariaPosX, double JokalariaPos
     dx /= Luzeera;
     dy /= Luzeera;
 
-    etsaila->x += dx * abiadura + cos(oszilatu);
-    etsaila->y += dy * abiadura;
+    etsaila->x += dx * abiadura;
+    etsaila->y += dy * abiadura + cos(oszilatu) * 5;
 }
 
 void PelotaMarraztu(ETSAILAK *pelota)

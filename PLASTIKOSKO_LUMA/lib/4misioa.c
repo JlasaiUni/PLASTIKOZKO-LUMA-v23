@@ -157,12 +157,12 @@ EGOERA LaugarrengoMisioa(void)
         for (i = 0; i < 4; i++)
         {
             EtsaiaMarraztu(&etsailak[i]);
-            EtsaiakMugitu(&etsailak[i], jokalaria.pos.x, jokalaria.pos.y, 0.3);
+            EtsaiakMugitu(&etsailak[i], jokalaria.pos.x, jokalaria.pos.y);
         }
         for (i = 4; i < 6; i++)
         {
             EtsaiaMarraztu(&etsailak[i]);
-            EtsaiakMugitu3(&etsailak[i], jokalaria.pos.x, jokalaria.pos.y, 0.3);
+            EtsaiakMugitu3(&etsailak[i], jokalaria.pos.x, jokalaria.pos.y);
         }
 
         // Disparoa

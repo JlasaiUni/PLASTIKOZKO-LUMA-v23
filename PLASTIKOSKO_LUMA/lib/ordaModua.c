@@ -48,8 +48,6 @@ void OrdaModua(void)
 
     jokalaria.pos.x = SCREEN_WIDTH / 2, jokalaria.pos.y = SCREEN_HEIGHT / 2; // jokalariaren ezaugarriak
 
-    double EtsailenAbiadura = 0.1;
-
     backgroundZenbakia = rand() % 4;
 
     snprintf(irudiak, sizeof(irudiak), "./img/back%d.bmp", backgroundZenbakia);
@@ -111,17 +109,17 @@ void OrdaModua(void)
         for (i = 0; i < herena; i++)
         {
             EtsaiaMarraztu(&etsailak[i]);
-            EtsaiakMugitu(&etsailak[i], jokalaria.pos.x, jokalaria.pos.y, EtsailenAbiadura);
+            EtsaiakMugitu(&etsailak[i], jokalaria.pos.x, jokalaria.pos.y);
         }
         for (i = herena; i < herena * 2; i++)
         {
             EtsaiaMarraztu(&etsailak[i]);
-            EtsaiakMugitu2(&etsailak[i], jokalaria.pos.x, jokalaria.pos.y, EtsailenAbiadura);
+            EtsaiakMugitu2(&etsailak[i], jokalaria.pos.x, jokalaria.pos.y);
         }
         for (i = herena * 2; i < KontEtsailak; i++)
         {
             EtsaiaMarraztu(&etsailak[i]);
-            EtsaiakMugitu3(&etsailak[i], jokalaria.pos.x, jokalaria.pos.y, EtsailenAbiadura);
+            EtsaiakMugitu3(&etsailak[i], jokalaria.pos.x, jokalaria.pos.y);
         }
         // Soinua joaten da
         if (ebentu == SAGU_BOTOIA_EZKERRA)
@@ -146,11 +144,6 @@ void OrdaModua(void)
             }
 
             KontEtsailak = KontEtsailak + 3;
-        }
-
-        if (pasatutako_denbora % 30000 == 0) // 30 segunduro etsailen abiadura gehitu
-        {
-            EtsailenAbiadura = EtsailenAbiadura + 0.2;
         }
 
         /*

@@ -104,7 +104,7 @@ EGOERA LehenengoMisioa(void)
         for (i = 0; i < 6; i++)
         {
             EtsaiaMarraztu(&etsailak[i]);
-            EtsaiakMugitu(&etsailak[i], jokalaria.pos.x, jokalaria.pos.y, 1); // etsailak geldi daude pruebak egiteko
+            EtsaiakMugitu(&etsailak[i], jokalaria.pos.x, jokalaria.pos.y);
         }
 
         // Tiroa kontrolatzen da

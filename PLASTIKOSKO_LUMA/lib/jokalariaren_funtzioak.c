@@ -11,7 +11,7 @@
 
 void JokalariMugimendu(double *JokalariaPosy, double *jokalariaPosx)
 {
-    double abiadura = 2;
+    double abiadura = 4;
     const Uint8 *keystate = SDL_GetKeyboardState(NULL); // teklak detektatzeko
 
     // jokalaria fletzekin mugitu
@@ -78,7 +78,7 @@ void JokalariMugimendu(double *JokalariaPosy, double *jokalariaPosx)
 
 void Disparoa(int ebentu, TIROA tiroak[MAX_DISPAROS], double posx, double posy)
 {
-    double luzeera, disparoVelocidad = 3;
+    double luzeera, disparoVelocidad = 6;
     int i, j = -1;
     POSIZIOA pos;
 

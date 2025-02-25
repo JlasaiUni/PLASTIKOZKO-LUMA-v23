@@ -18,13 +18,13 @@ void SpawnPuntuakSortu(PUNTUA *points, int numPoints);
 // ETSAILEN FUNTZIOAK.c ----------------------------------------------------------------------------------------------
 void AldeaAukeratuEtsaila(double *x, double *y);
 void EtsaiakSortu(ETSAILAK *etsaila, double x, double y, int idImagen);
-void EtsaiakMugitu(ETSAILAK *etsaila, double JokalariaPosX, double JokalariaPosy, double abiadura);
 void EtsaiaMarraztu(ETSAILAK *etsaila);
 void JefeFinalaMugitu(double *JefePosY, double abiadura, int *norabidea);
 void TiroaJefe(double *disparoPosJefeX, double *disparoPosJefeY, double *disparoBaiJefe, double jefeposx,
                double jefeposy);
-void EtsaiakMugitu3(ETSAILAK *etsaila, double JokalariaPosX, double JokalariaPosy, double abiadura);
-void EtsaiakMugitu2(ETSAILAK *etsaila, double JokalariaPosX, double JokalariaPosy, double abiadura);
+void EtsaiakMugitu(ETSAILAK *etsaila, double JokalariaPosX, double JokalariaPosy);
+void EtsaiakMugitu3(ETSAILAK *etsaila, double JokalariaPosX, double JokalariaPosy);
+void EtsaiakMugitu2(ETSAILAK *etsaila, double JokalariaPosX, double JokalariaPosy);
 int KolisioaTiroaEtsaila(double EtsailaX, double EtsailaY, double PelotaX, double PelotaY);
 
 // JOKALARIAREN FUNTZIOAK.c -------------------------------------------------------------------------------------------
