@@ -18,7 +18,8 @@ SARIAK sariak;
 
 void OrdaModua(void)
 {
-    int ebentu = 0, irten = 0, bai = 0, kont = 0, i, bukaera = 0, pelotaId, j, back, backgroundZenbakia;
+    int ebentu = 0, irten = 0, denborahasi = 0, bai = 0, kont = 0, kont2 = 0, konoBai = 0, i, bukaera = 0, pelotaId, j,
+        back, backgroundZenbakia, aktibatuta = 0, kontrola = 0;
     int KontEtsailak, herena;
     char contadorTexto[50];
     char irudiak[20];
@@ -26,7 +27,8 @@ void OrdaModua(void)
     ETSAILAK etsailak[120];
     TIROA tiroak[MAX_TIROAK] = {0};
     PowerUp DisparoKono;
-    uint32_t hasierako_denbora = 0, pasatutako_denbora = 0; // hasierako denbora 32 bit eta bakarrik positiboak
+    uint32_t hasierako_denbora = 0, pasatutako_denbora = 0,
+             pasatutako_denbora2 = -1; // hasierako denbora 32 bit eta bakarrik positiboak
 
     // Soinuak hasieratzen dira
     Mix_Chunk *soinuak[5] = {NULL};
@@ -79,7 +81,7 @@ void OrdaModua(void)
     jokalaria.id = irudiaKargatu("./img/ahate berria.bmp");
     pelotaId = irudiaKargatu("./img/UrPelota.bmp");
     DisparoKono.id = irudiaKargatu("./img/TiroPowerup.bmp");
-    irudiaMugitu(DisparoKono.id, DisparoKono.posX, DisparoKono.posY);
+    irudiaMugitu(DisparoKono.id, -100, -100);
     irudiaMugitu(jokalaria.id, jokalaria.pos.x, jokalaria.pos.y);
     irudiaMugitu(pelotaId, 1000, 1000);
 
@@ -146,18 +148,6 @@ void OrdaModua(void)
             KontEtsailak = KontEtsailak + 3;
         }
 
-        /*
-        if (pasatutako_denbora > 10000 && DisparoKono.activo == 0)
-                {
-                    irudiaMugitu(DisparoKono.id, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
-                }
-                else
-                {
-                    irudiaMugitu(DisparoKono.id, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
-                }
-        */
-
-        // Kolisioak detektatu etsaila eta tiroan artean
         for (i = 0; i < KontEtsailak; i++)
         {
             for (j = 0; j < MAX_TIROAK; j++)
@@ -167,6 +157,10 @@ void OrdaModua(void)
                     AldeaAukeratuEtsaila(&etsailak[i].x, &etsailak[i].y);
                     Mix_PlayChannel(-1, soinuak[3], 0);
                     kont++;
+                    if (konoBai == 0)
+                    {
+                        kont2++;
+                    }
                 }
             }
 
@@ -176,10 +170,48 @@ void OrdaModua(void)
             }
         }
 
+        // Activación del disparo en cono cuando se acumulan 10 puntos
+        if (kont2 >= 25 && konoBai == 0)
+        {
+            DisparoKono.posX = 300;
+            DisparoKono.posY = 300;
+            irudiaMugitu(DisparoKono.id, DisparoKono.posX, DisparoKono.posY);
+
+            aktibatuta = 1;
+            konoBai = 1;
+            kont2 -= 10; // Restamos 10 puntos en lugar de reiniciar
+        }
+
+        // Si el disparo está activo, manejamos la cuenta regresiva
+        if (aktibatuta == 1)
+        {
+            denborahasi = KolisioaPowerUp(tiroak, &DisparoKono, jokalaria.pos.x, jokalaria.pos.y);
+
+            if (denborahasi == 1 && kontrola == 0)
+            {
+                pasatutako_denbora2 = pasatutako_denbora; // Guardamos el tiempo de activación
+                kontrola = 1;
+            }
+        }
+
+        // Cuando pasan 10 segundos, se desactiva el disparo
+        if (kontrola == 1 && pasatutako_denbora2 + 10000 <= pasatutako_denbora)
+        {
+            konoBai = 0;
+            denborahasi = 0;
+            aktibatuta = 0;
+            kontrola = 0;
+
+            // Reiniciamos los tiros especiales
+            for (int i = 0; i < MAX_TIROAK; i++)
+            {
+                tiroak[i].tipo = 0; // Desactiva el tipo de cono
+            }
+        }
+
         if (ebentu == TECLA_RETURN) // return sakatu bada irten
         {
             irten = 1;
-            Mix_HaltChannel(1);
         }
         pantailaBerriztu();
     }

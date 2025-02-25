@@ -155,8 +155,9 @@ void Disparoa(int ebentu, TIROA tiroak[MAX_DISPAROS], double posx, double posy)
     }
 }
 
-void KolisioaPowerUp(TIROA tiroak[MAX_DISPAROS], PowerUp *powerUp, double jokalariaX, double jokalariaY)
+int KolisioaPowerUp(TIROA tiroak[MAX_DISPAROS], PowerUp *powerUp, double jokalariaX, double jokalariaY)
 {
+    int aktibatuta = 0;
     if ((((powerUp->posX + 5) > jokalariaX) && ((powerUp->posX - 5) < jokalariaX + 16)) &&
         (((powerUp->posY + 5) > jokalariaY) && ((powerUp->posY - 5) < jokalariaY + 16)))
     {
@@ -166,7 +167,11 @@ void KolisioaPowerUp(TIROA tiroak[MAX_DISPAROS], PowerUp *powerUp, double jokala
         {
             tiroak[i].tipo = 1; // Cambia todos los tiroak al tipo de cono
         }
+
+        irudiaMugitu(powerUp->id, -100, -100);
+        aktibatuta = 1;
     }
+    return aktibatuta;
 }
 
 /*

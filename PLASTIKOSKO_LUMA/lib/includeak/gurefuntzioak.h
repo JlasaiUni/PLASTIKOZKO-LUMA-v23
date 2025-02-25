@@ -30,7 +30,7 @@ int KolisioaTiroaEtsaila(double EtsailaX, double EtsailaY, double PelotaX, doubl
 // JOKALARIAREN FUNTZIOAK.c -------------------------------------------------------------------------------------------
 void JokalariMugimendu(double *JokalariaPosy, double *jokalariaPosx);
 void Disparoa(int ebentu, TIROA tiroak[], double posx, double posy);
-void KolisioaPowerUp(TIROA tiroak[], PowerUp *powerUp, double jokalariaX, double jokalariaY);
+int KolisioaPowerUp(TIROA tiroak[], PowerUp *powerUp, double jokalariaX, double jokalariaY);
 int KolisioaJokalariaEtsaila(double EtsailaX, double EtsailaY, double jokalariaX, double jokalariaY);
 void luzeeraMedikamentuaJokaliriaETALaguna(double MedicinarenPosx, double MedicinarenPosy, double posx, double posy,
                                            int *aurkituta, int *amaiera, int *medikamentua);
