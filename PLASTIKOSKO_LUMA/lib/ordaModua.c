@@ -255,8 +255,8 @@ void Puntuazioa(int kont, int pasatutako_denbora)
 
         irudiaMugitu(fondo, 0, 0);
 
-        textuaIdatzibeltza(480, 210, Punt);
-        textuaIdatzibeltza(480, 310, Denb);
+        textuaIdatzibeltza(480, 310, Punt);
+        textuaIdatzibeltza(480, 210, Denb);
 
         pantailaBerriztu();
 
