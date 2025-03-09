@@ -256,15 +256,16 @@ EGOERA LaugarrengoMisioa(void)
 void LaugarrenNibelaAzalpena()
 {
 
-    int egoera = 0, ebentu, fondo;
+    int egoera = 0, ebentu, fondo, kartela;
     fondo = irudiaKargatu("./img/back2.bmp");
+    kartela = irudiaKargatu("./img/kartel-handia_1.bmp");
     while (egoera == 0)
     {
         ebentu = ebentuaJasoGertatuBada();
         pantailaGarbitu();
         irudiakMarraztu();
-        textuaIdatzi(SCREEN_WIDTH / 2 - 80, SCREEN_HEIGHT / 2 - 40, "Aguantatu medikamentua lortu harte ");
-        textuaIdatzi(SCREEN_WIDTH / 2 - 50, SCREEN_HEIGHT / 2 + 10, "gero heman ahateari ");
+        textuaIdatzi(SCREEN_WIDTH / 2 - 120, SCREEN_HEIGHT / 2 - 40, "Aguantatu medikamentua lortu harte ");
+        textuaIdatzi(SCREEN_WIDTH / 2 - 90, SCREEN_HEIGHT / 2 + 10, "gero heman ahateari ");
 
         irudiaMugitu(fondo, 0, 0);
 

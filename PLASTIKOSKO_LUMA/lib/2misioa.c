@@ -24,7 +24,7 @@ EGOERA BigarrengoMisioa(void)
 {
     // Aldagaiak deklaratu
     int ebentu = 0, irten = 0, bai = 0, SariakKont = 0, kont2 = 0, i, basura, kontBasura = 0, pelotaId, back, Erlojua,
-        ErlojuaAktibatuta = 0, j;
+        ErlojuaAktibatuta = 0, j, kartela;
     char kontadoreaSariak[50], kontadoreaBasura[50];
     double relojPosx, relojPosy, LuzeeraErlojuaJokalaria;
     int sariarenImagenId[128];
@@ -61,8 +61,9 @@ EGOERA BigarrengoMisioa(void)
     relojPosx = rand() % (SCREEN_WIDTH - 32);
     relojPosy = rand() % (SCREEN_HEIGHT - 32);
 
-    // Atzera botoia hasieratu
     back = irudiaKargatu("./img/back4.bmp");
+    kartela = irudiaKargatu("./img/kartel-handia_1.bmp");
+    irudiaMugitu(kartela, -340, -280);
 
     // Etsailen irudiak hasieratu
     int etsailaImagenId[6];
@@ -102,7 +103,7 @@ EGOERA BigarrengoMisioa(void)
     irudiaMugitu(Erlojua, 1000, 1000);
 
     // Jokoa martxan jartzen duen while bukletan
-    while (kontBasura < 16 && !irten)
+    while (kontBasura < 12 && !irten)
     {
         // 5ms itxaron
         SDL_Delay(5);
@@ -121,11 +122,11 @@ EGOERA BigarrengoMisioa(void)
 
         // Sarien kontadorea pantailaratu
         sprintf(kontadoreaSariak, "Hartutako zaborrak: %d", kont2);
-        textuaIdatzi(10, 90, kontadoreaSariak);
+        textuaIdatzi(10, 20, kontadoreaSariak);
 
         // Basuraren kontadorea pantailaratu
         sprintf(kontadoreaBasura, "Basuran dauden zaborrak: %d", kontBasura);
-        textuaIdatzi(10, 120, kontadoreaBasura);
+        textuaIdatzi(10, 50, kontadoreaBasura);
 
         // Etsaiak mugitu
         if (ErlojuaAktibatuta == 0)
@@ -266,8 +267,9 @@ EGOERA BigarrengoMisioa(void)
 
 void BigarrenNibelaAsalpena()
 {
-    int egoera = 0, ebentu, fondo;
+    int egoera = 0, ebentu, fondo, kartela;
     fondo = irudiaKargatu("./img/back4.bmp");
+    kartela = irudiaKargatu("./img/kartel-handia_1.bmp");
     while (egoera == 0)
     {
         ebentu = ebentuaJasoGertatuBada();

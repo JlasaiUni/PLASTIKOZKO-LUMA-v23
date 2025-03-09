@@ -19,7 +19,7 @@ SARIAK sariak;
 void OrdaModua(void)
 {
     int ebentu = 0, irten = 0, denborahasi = 0, bai = 0, kont = 0, kont2 = 0, konoBai = 0, i, bukaera = 0, pelotaId, j,
-        back, backgroundZenbakia, aktibatuta = 0, kontrola = 0;
+        back, backgroundZenbakia, aktibatuta = 0, kontrola = 0, kartela;
     int KontEtsailak, herena;
     char contadorTexto[50];
     char irudiak[20];
@@ -53,6 +53,8 @@ void OrdaModua(void)
     backgroundZenbakia = rand() % 4;
 
     snprintf(irudiak, sizeof(irudiak), "./img/back%d.bmp", backgroundZenbakia);
+    kartela = irudiaKargatu("./img/kartel-handia_1.bmp");
+    irudiaMugitu(kartela, -440, -280);
     back = irudiaKargatu(irudiak);
 
     irudiaMugitu(back, 0, 0);

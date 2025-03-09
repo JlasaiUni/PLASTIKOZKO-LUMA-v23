@@ -21,7 +21,7 @@ PUNTUA spawnPuntuak[10];
 EGOERA HirugarrengoMisioa(void)
 {
     // Jokalariaren eta etsailen hasierako posizioak eta egoerak
-    int ebentu = 0, irten = 0, i, back, bomba;
+    int ebentu = 0, irten = 0, i, back, bomba, kartela;
     double BombaPosx, BombaPosy, luzeeraBombaJokalaria, posx = 0, posy = SCREEN_HEIGHT / 2;
     char denboraIdatzi[50];
 
@@ -49,6 +49,8 @@ EGOERA HirugarrengoMisioa(void)
 
     // Atzeko planoaren irudia kargatu
     back = irudiaKargatu("./img/back0.bmp");
+    kartela = irudiaKargatu("./img/kartel-handia_1.bmp");
+    irudiaMugitu(kartela, -440, -280);
 
     // Bombaren hasierako posizioa
     BombaPosx = rand() % (SCREEN_WIDTH - 32);
@@ -102,7 +104,7 @@ EGOERA HirugarrengoMisioa(void)
 
         // Denboraren kontadoria
         sprintf(denboraIdatzi, "Denbora: %d", pasatutako_denbora);
-        textuaIdatzi(10, 140, denboraIdatzi);
+        textuaIdatzi(10, 40, denboraIdatzi);
 
         for (i = 0; i < 5; i++) // Etsailak marraztu eta mugitu, mugimendu normalarekin
         {
@@ -193,14 +195,16 @@ EGOERA HirugarrengoMisioa(void)
 }
 void HirugarrenNibelaAsalpena()
 {
-    int egoera = 0, ebentu, fondo;
+    int egoera = 0, ebentu, fondo, kartela;
     fondo = irudiaKargatu("./img/back0.bmp");
+    kartela = irudiaKargatu("./img/kartel-handia_1.bmp");
+
     while (egoera == 0)
     {
         ebentu = ebentuaJasoGertatuBada();
         pantailaGarbitu();
         irudiakMarraztu();
-        textuaIdatzi(SCREEN_WIDTH / 2 - 50, SCREEN_HEIGHT / 2, "Aguantatu 30s hil barik ");
+        textuaIdatzi(SCREEN_WIDTH / 2 - 80, SCREEN_HEIGHT / 2 - 20, "Aguantatu 30s hil barik ");
 
         irudiaMugitu(fondo, 0, 0);
 

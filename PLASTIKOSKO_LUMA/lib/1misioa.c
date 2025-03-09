@@ -20,7 +20,7 @@ SARIAK sariak;
 EGOERA LehenengoMisioa(void)
 {
     // Aldagaiak hasieratzen dira
-    int ebentu = 0, irten = 0, bai = 0, puntuazioa = 0, i, j, bukaera = 0, back, pantailaKanpoan = 0;
+    int ebentu = 0, irten = 0, bai = 0, puntuazioa = 0, i, j, bukaera = 0, back, pantailaKanpoan = 0, kartela;
     char contadorTexto[50];
 
     // Jokalariaren egoera hasieratzen da
@@ -56,6 +56,8 @@ EGOERA LehenengoMisioa(void)
 
     // Atzera irudia kargatzen da
     back = irudiaKargatu("./img/back3.bmp");
+    kartela = irudiaKargatu("./img/kartel-handia_1.bmp");
+    irudiaMugitu(kartela, -440, -280);
 
     // Etsailen irudiak kargatzen dira
     int etsailaImagenId[6];
@@ -78,7 +80,7 @@ EGOERA LehenengoMisioa(void)
     irudiaMugitu(jokalaria.id, jokalaria.pos.x, jokalaria.pos.y);
 
     // Jokoa hasieratzen da
-    while (puntuazioa < 5 && !irten)
+    while (puntuazioa < 25 && !irten)
     {
         // Ebentuak jaso eta pantaila garbitzen da
         SDL_Delay(5);
@@ -186,14 +188,16 @@ EGOERA LehenengoMisioa(void)
 void LeenengonNibelaAsalpena(void)
 {
 
-    int egoera = 0, ebentu, fondo;
+    int egoera = 0, ebentu, fondo, kartela;
     fondo = irudiaKargatu("./img/back3.bmp");
+    kartela = irudiaKargatu("./img/kartel-handia_1.bmp");
+
     while (egoera == 0)
     {
         ebentu = ebentuaJasoGertatuBada();
         pantailaGarbitu();
         irudiakMarraztu();
-        textuaIdatzi(SCREEN_WIDTH / 2 - 50, SCREEN_HEIGHT / 2, " Garaitu etsailak ");
+        textuaIdatzi(SCREEN_WIDTH / 2 - 70, SCREEN_HEIGHT / 2 - 20, " Garaitu etsailak ");
 
         irudiaMugitu(fondo, 0, 0);
 

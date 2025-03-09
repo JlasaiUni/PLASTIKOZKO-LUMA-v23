@@ -239,14 +239,15 @@ EGOERA BosgarrengoMisioa(void)
 void BosgarrenNibelaAsalpena()
 {
 
-    int egoera = 0, ebentu, fondo;
+    int egoera = 0, ebentu, fondo, kartela;
     fondo = irudiaKargatu("./img/back1.bmp");
+    kartela = irudiaKargatu("./img/kartel-handia_1.bmp");
     while (egoera == 0)
     {
         ebentu = ebentuaJasoGertatuBada();
         pantailaGarbitu();
         irudiakMarraztu();
-        textuaIdatzi(SCREEN_WIDTH / 2 - 50, SCREEN_HEIGHT / 2, "Etsai nagusia garaitu");
+        textuaIdatzi(SCREEN_WIDTH / 2 - 80, SCREEN_HEIGHT / 2 - 20, "Etsai nagusia garaitu");
 
         irudiaMugitu(fondo, 0, 0);
 
